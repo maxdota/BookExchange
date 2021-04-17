@@ -14,3 +14,89 @@
       triet="{{item}}" />
 </view>
   
+
+<!-- Popup to confirm book request -->
+<view>
+   <popup
+      position="center"
+      show="{{show}}"
+      mask="true"
+      disableScroll
+      zIndex="10"
+      onClose="onCancel"
+    >
+    <view style="
+      background:#fff,
+      display:flex;
+      width:'100%';
+      height:'200px';
+      margin-top: '200px';
+      justify-content:center;
+      flex-direction:column;
+      align-items:center
+    ">
+        <text style="text-align: center;">{{ popup_text_1 }}</text>
+        <text style="text-align: center;">{{ popup_text_2 }}</text>
+        <view style="
+          display:flex;
+          flex-direction:row;
+          justify-content:space-between;
+          aligh-items:center;
+          margin-top:12px;
+        ">
+          <button
+            onTap="onRequestConfirm"
+            size="big"
+            color="#ffffff"
+            style="width:100px; margin-right: 20px;"
+            type="primary">Gửi</button>
+          <button
+            onTap="onCancel"
+            size="big"
+            style="width:100px;"
+            type="secondary">Không</button>
+        </view>
+      </view>
+    </popup>
+</view>
+
+<!-- Popup to finish book request -->
+<view>
+   <popup
+      position="center"
+      show="{{showFinishPopup}}"
+      mask="true"
+      disableScroll
+      zIndex="10"
+      onClose="onCancel"
+    >
+    <view style="
+      background:#fff,
+      display:flex;
+      width:'100%';
+      height:'250px';
+      margin-top: '200px';
+      justify-content:center;
+      flex-direction:column;
+      align-items:center
+    ">
+        <text style="text-align: center;">{{ popup_text_1 }}</text>
+        <text style="text-align: center;">{{ popup_text_2 }}</text>
+        <text style="text-align: center;">{{ popup_text_3 }}</text>
+        <text class="title" style="text-align: center; text-decoration: bold;">{{ popup_text_4 }}</text>
+        <view style="
+          display:flex;
+          flex-direction:row;
+          justify-content:space-between;
+          aligh-items:center;
+          margin-top:12px;
+        ">
+          <button
+            onTap="onCancel"
+            size="big"
+            style="width:100px;"
+            type="secondary">OK</button>
+        </view>
+      </view>
+    </popup>
+</view>
