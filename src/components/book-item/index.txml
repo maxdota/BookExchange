@@ -1,0 +1,29 @@
+<view class="book">
+  <image
+    resize-mode="contain"
+    style="width: {{imageWidth}}px" 
+    src="{{book.image_url}}" />
+  <view onTap="onGoToProductPage">
+    <text number-of-lines="{{3}}">{{book.title}}</text>
+    <text number-of-lines="{{2}}">{{book.author}}</text>
+  </view>
+  <view class="price-container">
+    <price price="{{book.status}}" />
+
+    <button 
+      tiki:if="{{!book.selected}}" 
+      onTap="onSelected"
+      class="buttonIcon" 
+      type="secondary">
+      <icon color="#1A94FF" type="plus" />
+    </button>
+
+    <button 
+      tiki:if="{{book.selected}}"
+      onTap="onSelected"
+      class="buttonIcon" 
+      type="secondary">
+      <icon color="#FF0000" type="minus" />
+    </button>
+  </view>
+</view>

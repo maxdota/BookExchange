@@ -1,0 +1,23 @@
+    <text class="title">Sách của {{name}}</text>
+
+    <view class="loading" tiki:if="{{loading}}">
+      <image 
+        style="width: 32px; height: 32px; gravity: center;"  
+        src="https://shopping-miniapp.s3.ap-south-1.amazonaws.com/spinner.gif" />
+    </view>
+
+    <!-- <view tiki:if="{{!loading}}" class="products">
+      <product-item 
+        tiki:for="{{books}}" 
+        imageWidth="{{imageWidth}}"
+        onAddCart="onPageAddCart"
+        product="{{item}}" />
+    </view> -->
+
+    <view tiki:if="{{!loading}}" class="products">
+      <book-item 
+        tiki:for="{{books}}" 
+        imageWidth="{{imageWidth}}"
+        onSelected="onSelected"
+        book="{{item}}" />
+    </view>

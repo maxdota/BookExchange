@@ -20,7 +20,10 @@ Page({
       }
     });
 
-    my.navigateTo({ url: `pages/your-lib/index` });
+    // my.navigateTo({ url: `pages/your-lib/index` });
+  },
+  goMyBook() {
+    my.navigateTo({url: `pages/mybook/index`});
   },
   onPageSendRequest(product) {
     app.onAppSendRequest(product);

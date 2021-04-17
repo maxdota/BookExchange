@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/your-lib/index"
+    "pages/your-lib/index",
+    "pages/mybook/index"
   ],
   "window": {
     "defaultTitle": "Book Exchange"

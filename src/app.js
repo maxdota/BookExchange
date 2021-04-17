@@ -1,4 +1,9 @@
 App({
+  data: {
+    userId: "1",
+    name: "ABC",
+    myBooks: [],
+  },
   onLaunch(options) {
     console.log('App onLaunch');
   },

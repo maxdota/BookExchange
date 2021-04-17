@@ -1,4 +1,5 @@
-<view class="title-container">
+<view class="title-container"
+  onTap="goMyBook">
   <text class="title library">Thư Viện Sách</text>
 
   <image
