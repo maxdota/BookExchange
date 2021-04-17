@@ -10,6 +10,8 @@ App({
     fakeAuth: true,
     requestCount: 10,
     notificationFetchInterval: 10000,
+    chosenBookId: 1,
+    chosenUserId: 1,
     fakeName: true,
     fakeAuth: true
   },
@@ -19,7 +21,8 @@ App({
   onShow(options) {
   },
   onAppSendRequest(product) {
-    
+    this.data.chosenBookId = product.id
+    this.data.chosenUserId = product.user_id
   },
   onAppAcceptRequest(product) {
     

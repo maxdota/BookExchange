@@ -89,7 +89,7 @@ Page({
     }
   },
   requestSharableBooks() {
-      my.request({
+    my.request({
       url: 'https://api.tala.xyz/shopping/v1/mini-app/all-shareable-books/',
       method: 'GET',
       success: (response) => {
@@ -105,7 +105,7 @@ Page({
     my.navigateTo({url: `pages/mybook/index`});
   },
   onPageSendRequest(product) {
-    // app.onAppSendRequest(product);
+    app.onAppSendRequest(product);
 
     this.setData({
       show: true,
@@ -117,13 +117,34 @@ Page({
     this.setData({ show: false })    
   },
   onSendConfirm() {
-    // Show toast
-    my.showToast({
-      type: 'success',
-      content: 'Đã gửi yêu cầu trao đổi sách',
-      buttonText: 'OK',
-      duration: 2000,
+    console.log("chosen book id: " + app.data.chosenBookId);
+    console.log("chosen user id: " + app.data.chosenUserId);
+    my.request({
+      headers:  {
+        'Content-Type': 'application/json'
+      },
+      url: 'https://api.tala.xyz/shopping/v1/mini-app/request/create',
+      method: 'POST',
+      data: {
+        requester_id: app.data.userId,
+        book_id: app.data.chosenBookId,
+        user_id: app.data.chosenUserId
+      },
+      success: (response) => {
+        console.log('onSendConfirm Response OK')
+        // Show toast
+        my.showToast({
+          type: 'success',
+          content: 'Đã gửi yêu cầu trao đổi sách',
+          buttonText: 'OK',
+          duration: 2000,
+        });
+      },
+      fail: (fail) => {
+        console.log('onSendConfirm Fail', fail);
+      }
     });
+
     this.setData({ show: false })    
   },
   onPageAcceptRequest(product) {
