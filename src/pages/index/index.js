@@ -15,37 +15,42 @@ Page({
   },
   onLoad(query) {
     if(app.data.userId == -1 && app.data.requiredLogin) {
-      my.getUserInfo({
-      success: (res) => {
-        console.log("Request authen SUCCESS: ", res);
-        if(res !== undefined) {
-          this.requestSharableBooks();
-          this.setAuth(res.name)
-          app.setUserName(res.name);
-          this.setData({
-            userImage: res.avatar,
-            userName: res.name,
-          });
-        } else {
-          this.setAuth("Cứ cho là đã LOGIN");
-          this.setData({
-            userName: app.data.userName,
-            userImage: app.data.userImage,
-          });
-          this.requestSharableBooks();
+      my.getAuthCode({
+        success: (resp) => {
+            my.getUserInfo({
+              success: (res) => {
+                console.log("Request authen SUCCESS: ", res);
+                if(res !== undefined) {
+                  this.requestSharableBooks();
+                  this.setAuth(res.name)
+                  app.setUserName(res.name);
+                  this.setData({
+                    userImage: res.avatar,
+                    userName: res.name,
+                  });
+                } else {
+                  this.setAuth("Cứ cho là đã LOGIN");
+                  this.setData({
+                    userName: app.data.userName,
+                    userImage: app.data.userImage,
+                  });
+                  this.requestSharableBooks();
+                }
+                return
+              },
+              fail: (res) => {
+                console.log("Request authen FAILED: ", res);
+                this.setAuth("User - AUTHEN bị lỗi");
+                this.setData({
+                    userName: app.data.userName,
+                    userImage: app.data.userImage,
+                  });
+                this.requestSharableBooks();
+              },
+            });
         }
-        return
-      },
-      fail: (res) => {
-        console.log("Request authen FAILED: ", res);
-        this.setAuth("User - AUTHEN bị lỗi");
-        this.setData({
-            userName: app.data.userName,
-            userImage: app.data.userImage,
-          });
-        this.requestSharableBooks();
-      },
-    });
+      });
+      
     } else {
       this.setAuth("User - Không cần yêu cầu Login");
       this.setData({
