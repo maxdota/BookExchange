@@ -5,7 +5,7 @@
   <image
     resize-mode="contain"
     class="avatar"
-    src="https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png" />
+    src="{{userImage}}" />
 </view>
 
 <view class="loading" tiki:if="{{item.loading}}">

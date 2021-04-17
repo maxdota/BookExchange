@@ -2,7 +2,7 @@ const app = getApp();
 
 Page({
   data: {
-    name: "ABC",
+    userName: "ABC",
     bannerWidth: 0,
     windowWidth: 0,
     imageWidth: 0,
@@ -13,7 +13,7 @@ Page({
   },
   onLoad() {
     this.setData({
-      name: app.data.name,
+      userName: app.data.userName,
     });
     // Get size
     my.getSystemInfo({

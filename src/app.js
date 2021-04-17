@@ -1,8 +1,10 @@
 App({
   data: {
-    userId: "1",
-    name: "ABC",
+    userId: "-1",
+    userName: "ABC",
+    userImage: "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
     myBooks: [],
+    requiredLogin: false,
   },
   onLaunch(options) {
     console.log('App onLaunch');
@@ -10,23 +12,15 @@ App({
   onShow(options) {
   },
   onAppSendRequest(product) {
-    const index = this.cart.products.findIndex(p => p.id === product.id);
-    if (index > -1) {
-      this.cart.products[index].total += 1;
-    } else {
-      this.cart.products.push({ ...product, total: 1 });
-    }
-    this.cart.totalPrice += product.price;
-    this.cart.count += 1;
+    
   },
   onAppAcceptRequest(product) {
-    const index = this.cart.products.findIndex(p => p.id === product.id);
-    if (index > -1) {
-      this.cart.products[index].total += 1;
-    } else {
-      this.cart.products.push({ ...product, total: 1 });
-    }
-    this.cart.totalPrice += product.price;
-    this.cart.count += 1;
+    
+  },
+  setUserName(newName) {
+    this.data.userName = newName;
+  },
+  setUserId(id) {
+    this.data.userId = id;
   },
 });
