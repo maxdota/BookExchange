@@ -15,7 +15,7 @@
   margin-left: 12px;
 }
 
-.products {
+.noti-container {
   margin-top: 12px;
   display: flex;
   flex-direction: row;

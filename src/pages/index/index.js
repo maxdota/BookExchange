@@ -2,6 +2,7 @@ const app = getApp();
 
 Page({
   data: {
+    loading: true,
     userName: "",
     userImage: "",
   },
@@ -58,21 +59,39 @@ Page({
         userImage: app.data.userImage,
       });
       my.request({
-      url: 'https://api.tala.xyz/shopping/v1/mini-app/all-shareable-books/',
+        url: 'https://api.tala.xyz/shopping/v1/mini-app/all-shareable-books/',
+        method: 'GET',
+        success: (response) => {
+          console.log('Product Reponse: ', response)
+          this.setData({ triets: response, loading: false });
+        },
+        fail: (fail) => {
+          console.log('Fail', fail);
+        }
+      });
+    }
+    setInterval(this.repeatFetching, app.data.notificationFetchInterval);
+  },
+  repeatFetching() {
+    console.log('Repeating...');
+    my.request({
+      url: 'https://api.tala.xyz/shopping/v1/mini-app/notifications/' + app.data.userId,
       method: 'GET',
       success: (response) => {
-        console.log('Product Reponse: ', response)
-        this.setData({ triets: response, loading: false });
+        console.log('Requests Reponse: ', response)
+        var notiCount = response.filter(
+          r => r.status === 'PENDING'
+        ).length;
+        console.log('number: ' + notiCount);
+        my.setTabBarBadge({
+          index: 1,
+          text: notiCount,
+        });
       },
       fail: (fail) => {
         console.log('Fail', fail);
       }
     });
-    }
-    setInterval(this.repeatFetching, 10000);
-  },
-  repeatFetching() {
-    console.log('Repeating...');
   },
   setAuth(user_name) {
     if (app.data.fakeAuth) {
@@ -120,18 +139,18 @@ Page({
     console.log("chosen book id: " + app.data.chosenBookId);
     console.log("chosen user id: " + app.data.chosenUserId);
     my.request({
-      headers:  {
-        'Content-Type': 'application/json'
-      },
       url: 'https://api.tala.xyz/shopping/v1/mini-app/request/create',
+      headers: {
+          "Content-Type": "application/json"
+        },
       method: 'POST',
       data: {
         requester_id: app.data.userId,
-        book_id: app.data.chosenBookId,
+        request_book_id: app.data.chosenBookId,
         user_id: app.data.chosenUserId
       },
       success: (response) => {
-        console.log('onSendConfirm Response OK')
+        console.log('onSendConfirm Response dd OK')
         // Show toast
         my.showToast({
           type: 'success',
@@ -141,7 +160,7 @@ Page({
         });
       },
       fail: (fail) => {
-        console.log('onSendConfirm Fail', fail);
+        console.log('onSendConfirm dd Fail', fail);
       }
     });
 

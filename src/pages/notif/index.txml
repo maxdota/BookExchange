@@ -1,3 +1,53 @@
-<view class="page">
-    <text class="title">Không có thông báo nào</text>
+<view class="loading" tiki:if="{{item.loading}}">
+  <image 
+    style="width: 32px; height: 32px"  
+    src="https://shopping-miniapp.s3.ap-south-1.amazonaws.com/spinner.gif" />
+</view>
+<view tiki:if="{{!item.loading}}" class="noti-container">
+  <triet-noti 
+      tiki:for="{{triets}}" 
+      onDetails="onPageDetails"
+      onCheckBook="onPageCheckBook"
+      onReject="onPageReject"
+      triet="{{item}}" />
+</view>
+
+<!-- Popup to see book request details -->
+<view>
+   <popup
+      position="center"
+      show="{{show}}"
+      mask="true"
+      disableScroll
+      zIndex="10"
+      onClose="onCancel"
+    >
+    <view style="
+      background:#fff,
+      display:flex;
+      width:'100%';
+      height:'200px';
+      margin-top: '200px';
+      justify-content:center;
+      flex-direction:column;
+      align-items:center
+    ">
+        <text>{{ popup_text_1 }}</text>
+        <text style="text-align: center;">{{ popup_text_2 }}</text>
+        <text style="text-align: center;">{{ popup_text_3 }}</text>
+        <view style="
+          display:flex;
+          flex-direction:row;
+          justify-content:space-between;
+          aligh-items:center;
+          margin-top:12px;
+        ">
+          <button
+            onTap="onCancel"
+            size="big"
+            style="width:100px;"
+            type="secondary">OK</button>
+        </view>
+      </view>
+    </popup>
 </view>

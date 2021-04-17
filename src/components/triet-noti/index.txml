@@ -1,0 +1,33 @@
+
+<view class="triet">
+  <view tiki:if="{{triet.status==='PENDING' && triet.user_id===userId}}">
+    <text class="author">{{triet.requester_name}} muốn trao đổi sách với bạn</text>
+    <text>Sách được yêu cầu: {{triet.request_book_name}}</text>
+    <view class="noti-bt-container">
+      <button  
+        onTap="onCheckBook"
+        class="shareBtn"
+        type="secondary">
+        <text>Xem Sách</text>
+      </button>
+      <button
+        onTap="onReject"
+        class="unshareBtn" 
+        type="secondary">
+        <text>Từ Chối</text>
+      </button>
+    </view>
+  </view>
+  <view tiki:if="{{triet.status==='ACCEPTED' && triet.requester_user_id===userId}}">
+    <text>{{triet.user_name}} đồng ý trao đổi sách với bạn</text>
+    <view class="noti-bt-container">
+      <button  
+        onTap="onDetails"
+        class="shareBtn"
+        type="secondary">
+        <text>Xem Chi Tiết</text>
+      </button>
+    </view>
+  </view>
+  <view class="noti-divider" />
+</view>

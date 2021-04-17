@@ -1,0 +1,41 @@
+.triet {
+  width: 100%;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 12px;
+}
+
+.book-img {
+  width: 100%;
+}
+
+.send-button {
+  margin-top: 10px;
+}
+
+.add {
+  width: 32px;
+  height: 32px;
+}
+
+.noti-bt-container {
+  flex-direction: row;
+  align-items: center;
+  width: 220px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.shareBtn {
+  background-color: #FFFFFFFF; 
+}
+
+.unshareBtn {
+}
+
+.noti-divider {
+  height: 2px;
+  background-color: #efefef;
+  width: 100%;
+}

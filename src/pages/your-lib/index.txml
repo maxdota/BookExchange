@@ -92,7 +92,7 @@
           margin-top:12px;
         ">
           <button
-            onTap="onCancel"
+            onTap="onFinish"
             size="big"
             style="width:100px;"
             type="secondary">OK</button>
