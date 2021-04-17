@@ -7,23 +7,27 @@
     <text number-of-lines="{{3}}">{{book.title}}</text>
     <text number-of-lines="{{2}}">{{book.author}}</text>
   </view>
-  <view class="price-container">
-    <price price="{{book.status}}" />
 
+  <!-- <price price="{{book.status}}" /> -->
+
+  <view class="price-container">
+    <!-- <price price="{{book.status}}" /> -->
     <button 
       tiki:if="{{!book.selected}}" 
       onTap="onSelected"
-      class="buttonIcon" 
+      class="shareBtn" 
       type="secondary">
-      <icon color="#1A94FF" type="plus" />
+      <!-- <icon color="#1A94FF" type="plus" /> -->
+      <text>Chia sẻ</text>
     </button>
 
     <button 
       tiki:if="{{book.selected}}"
       onTap="onSelected"
-      class="buttonIcon" 
+      class="unshareBtn" 
       type="secondary">
-      <icon color="#FF0000" type="minus" />
+      <!-- <icon color="#FF0000" type="minus" /> -->
+      <text>Ngưng chia sẻ</text>
     </button>
   </view>
 </view>
