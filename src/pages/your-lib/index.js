@@ -39,6 +39,7 @@ Page({
     console.log('request_book_id' + app.data.checkBookRequestBookId);
     console.log('user_id' + app.data.userId);
     console.log('book_id' + app.data.checkBookId);
+    console.log('id' + app.data.checkBookRequestId);
     my.request({
       url: 'https://api.tala.xyz/shopping/v1/mini-app/request/accept',
       headers: {
@@ -46,6 +47,7 @@ Page({
         },
       method: 'POST',
       data: {
+        id: app.data.checkBookRequestId,
         requester_id: app.data.checkBookRequesterId,
         request_book_id: app.data.checkBookRequestBookId,
         user_id: app.data.userId,

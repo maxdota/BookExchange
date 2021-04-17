@@ -9,9 +9,10 @@ App({
     requiredLogin: false,
     fakeAuth: true,
     requestCount: 10,
-    notificationFetchInterval: 1000,
+    notificationFetchInterval: 3000,
     chosenBookId: 1,
     chosenUserId: 1,
+    checkBookRequestId: 1,
     checkBookRequesterId: 1,
     checkBookRequestBookId: 1,
     checkBookId: 1,
@@ -28,6 +29,7 @@ App({
     this.data.chosenUserId = product.user_id
   },
   onPageCheckBook(product) {
+    this.data.checkBookRequestId = product.id
     this.data.checkBookRequesterId = product.requester_id
     this.data.checkBookRequestBookId = product.request_book_id
   },
