@@ -13,28 +13,18 @@ Page({
       method: 'GET',
       success: (response) => {
         console.log('Product Reponse: ', response)
-        this.setData({ triets: response, loading: false });
+        this.setData({
+          triets: response, loading: false,
+          owner_name: "Triet"
+          });
       },
       fail: (fail) => {
         console.log('Fail', fail);
       }
     });
-
-    my.navigateTo({ url: `pages/your-lib/index` });
-  },
-  onPageSendRequest(product) {
-    app.onAppSendRequest(product);
-
-    // Show toast
-    my.showToast({
-      type: 'success',
-      content: 'Sản phẩm đã được thêm vào giỏ hàng',
-      buttonText: 'OK',
-      duration: 3000,
-    });
   },
   onPageAcceptRequest(product) {
-    app.onAppAcceptRequest(product);
+    app.onAppSendRequest(product);
 
     // Show toast
     my.showToast({
