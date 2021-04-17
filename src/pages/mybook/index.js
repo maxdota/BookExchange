@@ -62,34 +62,59 @@ Page({
     console.log("index: ", index);
     
     var currentThis = this;
+    var newStatus = "";
+    if(selectedBook.status == "SHAREABLE") {
+      newStatus = 'IN_STOCK';
+    } else {
+       newStatus = 'SHAREABLE';
+    }
+    console.log("SELECTED BOOK ID ", selectedBook.id);
+    console.log("NEW STATUS: ", newStatus);
+    my.request({
+      url: 'https://api.tala.xyz/shopping/v1/mini-app/book',
+      headers: {
+          "Content-Type": "application/json"
+        },
+      method: 'POST',
+      data: {
+        id: selectedBook.id,
+        status: newStatus
+      },
+      success: (response) => {
+        temp = this.data.books;
+        temp.forEach(function (value, i) {
+          if(value.id == selectedBook.id) {
+            console.log('%d: %s', i, value);
+            var selectedIndexBook = i;
+            console.log("Selected book: ", value);
+            console.log("Selected index: ", selectedIndexBook);
+            value.selected = !value.selected;
+            console.log("CHANE ", value);
+            currentThis.data.books[selectedIndexBook] = value;
+            console.log("CHANE 2", value);
+            return true
+          }
+        });
 
-    temp = this.data.books;
-    temp.forEach(function (value, i) {
-      if(value.id == selectedBook.id) {
-        console.log('%d: %s', i, value);
-        var selectedIndexBook = i;
-        console.log("Selected book: ", value);
-        console.log("Selected index: ", selectedIndexBook);
-        value.selected = !value.selected;
-        console.log("CHANE ", value);
-        currentThis.data.books[selectedIndexBook] = value;
-        console.log("CHANE 2", value);
-        return true
+        this.setData({
+          books: temp,
+        });
+
+        console.log("Out forEach");
+        if (index > -1) {
+          this.data.selectedBookIds.splice(index)
+        } else {
+          this.data.selectedBookIds.push(selectedBook.id);
+        }
+        console.log("Selected id in this screen: ", this.data.selectedBookIds);
+        console.log("Current books: ", this.data.books);
+      },
+      fail: (fail) => {
+        console.log('Fail', fail);
+        this.setData({ loading: false, });
       }
     });
 
-    this.setData({
-      books: temp,
-    });
-
-    console.log("Out forEach");
-    if (index > -1) {
-      this.data.selectedBookIds.splice(index)
-    } else {
-      this.data.selectedBookIds.push(selectedBook.id);
-    }
-    console.log("Selected id in this screen: ", this.data.selectedBookIds);
-    console.log("Current books: ", this.data.books);
   },
   isItemSelected(bookId) {
     return this.data.selectedBookIds.indexOf(bookId);
