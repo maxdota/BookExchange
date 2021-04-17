@@ -2,9 +2,26 @@
   "pages": [
     "pages/index/index",
     "pages/your-lib/index",
-    "pages/mybook/index"
+    "pages/mybook/index",
+    "pages/notif/index"
   ],
   "window": {
     "defaultTitle": "Book Exchange"
+  },
+  "tabBar": {
+    "items": [
+      { 
+        "name": "Trung tâm trao đổi", 
+        "pagePath": "pages/index/index",
+        "icon": "images/baseline_book_black_48.png",
+        "activeIcon": "images/baseline_book_black_48.png"
+      },
+      { 
+        "name": "Thông báo", 
+        "pagePath": "pages/notif/index",
+        "icon": "images/baseline_notifications_none_black_48.png",
+        "activeIcon": "images/baseline_notifications_none_black_48.png"
+      }
+    ]
   }
 }
