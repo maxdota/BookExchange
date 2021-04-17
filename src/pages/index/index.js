@@ -130,7 +130,7 @@ Page({
     this.setData({
       show: true,
       popup_text_1: 'Bạn có muốn gửi yêu cầu trao đổi sách?',
-      popup_text_2: '(Triết sẽ chọn đổi với 1 quyển trong thư viện của bạn)'
+      popup_text_2: '(Đối phương sẽ chọn đổi với 1 quyển trong thư viện của bạn)'
       })
   },
   onCancel() {
