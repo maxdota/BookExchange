@@ -1,1 +1,21 @@
-<view>This is blank page</view>
+<view class="title-container">
+  <text class="title library">Thư Viện Sách</text>
+
+  <image
+    resize-mode="contain"
+    class="avatar"
+    src="https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png" />
+</view>
+
+<view class="loading" tiki:if="{{item.loading}}">
+  <image 
+    style="width: 32px; height: 32px"  
+    src="https://shopping-miniapp.s3.ap-south-1.amazonaws.com/spinner.gif" />
+</view>
+<view tiki:if="{{!item.loading}}" class="products">
+  <triet-item 
+      tiki:for="{{triets}}" 
+      onSendRequest="onPageSendRequest"
+      triet="{{item}}" />
+</view>
+  

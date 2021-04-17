@@ -1,0 +1,16 @@
+<view class="triet">
+  <image
+    resize-mode="contain"
+    class="book-img"
+    src="{{triet.image_url}}" />
+  <view>
+    <text number-of-lines="{{3}}">{{triet.title}}</text>
+  </view>
+  <text class="author">{{triet.author}}</text>
+  <button 
+    class="send-button"
+    onTap="onSendRequest"
+    type="secondary">
+    <text>Gửi Yêu Cầu</text>
+  </button>
+</view>
