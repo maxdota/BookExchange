@@ -69,11 +69,19 @@ Page({
       }
     });
     }
+    setInterval(this.repeatFetching, 10000);
+  },
+  repeatFetching() {
+    console.log('Repeating...');
   },
   setAuth(user_name) {
     if (app.data.fakeAuth) {
-      app.setUserName(user_name);
-      app.setUserId(1);
+      if (app.data.fakeName) {
+        app.setUserName(app.data.testUserName);
+      } else {
+        app.setUserName(user_name);
+      }
+      app.setUserId(app.data.testUserId);
     } else {
       var uId = Math.floor(Math.random() * 10000);
       app.setUserId(uId)
