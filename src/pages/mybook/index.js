@@ -39,7 +39,15 @@ Page({
       method: 'GET',
       success: (response) => {
         console.log(`List of my book ${userId}`, response);
-        this.setData({ books: response, });
+        temp = response;
+        temp.forEach(function (value, i) {
+          if(value.status == "SHAREABLE") {
+            value.selected = true;
+          } else {
+            value.selected = false;
+          }
+        });
+        this.setData({ books: temp, });
         this.setData({ loading: false, });
       },
       fail: (fail) => {
