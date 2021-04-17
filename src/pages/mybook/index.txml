@@ -1,4 +1,4 @@
-    <text class="title">Sách của {{userName}}</text>
+    <text class="title">Sách của {{userName}} (user-{{userId}})</text>
 
     <view class="loading" tiki:if="{{loading}}">
       <image 

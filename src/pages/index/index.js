@@ -58,8 +58,9 @@ Page({
         userName: app.data.userName,
         userImage: app.data.userImage,
       });
+      console.log('Getting books for user id: ' + app.data.userId);
       my.request({
-        url: 'https://api.tala.xyz/shopping/v1/mini-app/all-shareable-books/',
+        url: 'https://api.tala.xyz/shopping/v1/mini-app/all-shareable-books?user_id=' + app.data.userId,
         method: 'GET',
         success: (response) => {
           console.log('Product Reponse: ', response)

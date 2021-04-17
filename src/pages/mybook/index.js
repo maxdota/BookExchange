@@ -14,6 +14,7 @@ Page({
   onLoad() {
     this.setData({
       userName: app.data.userName,
+      userId: app.data.userId
     });
     // Get size
     my.getSystemInfo({
