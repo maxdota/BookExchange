@@ -1,6 +1,8 @@
 .book {
   width: 50%;
-  padding: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 12px;
 }
 
 .add {
@@ -14,6 +16,10 @@
 
 .unshareBtn {
   background-color: #FF3A55; 
+}
+
+.book-img {
+  width: 100%;
 }
 
 .price-container {
