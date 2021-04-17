@@ -1,0 +1,9 @@
+{
+  "name": "book-exchange",
+  "version": "0.1.0",
+  "tiki": {
+    "appName": "BookExchange",
+    "appIdentifier": "vn.tiki.hackathon.cnkd",
+    "buildNumber": 1
+  }
+}
