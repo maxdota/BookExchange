@@ -128,5 +128,12 @@ Page({
       buttonText: 'OK',
       duration: 3000,
     });
-  }
+  },
+  onHasNotif() {
+    // Set TabBar Badge
+    my.setTabBarBadge({
+      index: 1,
+      text: app.requestCount,
+    });
+  },
 });

@@ -5,7 +5,8 @@ App({
     userImage: "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
     myBooks: [],
     requiredLogin: false,
-    fakeAuth: true
+    fakeAuth: true,
+    requestCount: 10,
   },
   onLaunch(options) {
     console.log('App onLaunch');
