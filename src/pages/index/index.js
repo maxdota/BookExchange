@@ -20,15 +20,14 @@ Page({
         console.log("Request authen SUCCESS: ", res);
         if(res !== undefined) {
           this.requestSharableBooks();
+          this.setAuth(res.name)
           app.setUserName(res.name);
-          app.setUserId("1");
           this.setData({
             userImage: res.avatar,
             userName: res.name,
           });
         } else {
-          app.setUserName("Cứ cho là đã LOGIN");
-          app.setUserId("1");
+          this.setAuth("Cứ cho là đã LOGIN");
           this.setData({
             userName: app.data.userName,
             userImage: app.data.userImage,
@@ -39,8 +38,7 @@ Page({
       },
       fail: (res) => {
         console.log("Request authen FAILED: ", res);
-        app.setUserName("User - AUTHEN bị lỗi");
-        app.setUserId("1");
+        this.setAuth("User - AUTHEN bị lỗi");
         this.setData({
             userName: app.data.userName,
             userImage: app.data.userImage,
@@ -49,8 +47,7 @@ Page({
       },
     });
     } else {
-      app.setUserName("User - Không cần yêu cầu Login");
-      app.setUserId("1");
+      this.setAuth("User - Không cần yêu cầu Login");
       this.setData({
         userName: app.data.userName,
         userImage: app.data.userImage,
@@ -66,6 +63,16 @@ Page({
         console.log('Fail', fail);
       }
     });
+    }
+  },
+  setAuth(user_name) {
+    if (app.data.fakeAuth) {
+      app.setUserName(user_name);
+      app.setUserId(1);
+    } else {
+      var uId = Math.floor(Math.random() * 10000);
+      app.setUserId(uId)
+      app.setUserName("User " + uId);
     }
   },
   requestSharableBooks() {

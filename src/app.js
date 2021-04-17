@@ -1,10 +1,11 @@
 App({
   data: {
-    userId: "-1",
-    userName: "ABC",
+    userId: 1,
+    userName: "Quang",
     userImage: "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
     myBooks: [],
-    requiredLogin: false,
+    requiredLogin: true,
+    fakeAuth: true
   },
   onLaunch(options) {
     console.log('App onLaunch');
