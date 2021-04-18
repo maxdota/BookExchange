@@ -5,7 +5,7 @@ Page({
     loading: true
   },
   onLoad() {
-    this.reload();
+    console.log('Noti onLoad');
   },
   reload() {
     my.request({
@@ -62,9 +62,11 @@ Page({
     }); 
   },
   onReady() {
+    console.log('Noti onReady');
   },
   onShow() {
-    console.log("notif");
+    console.log('Noti onShow');
+    this.reload();
   },
   onHide() {
   },

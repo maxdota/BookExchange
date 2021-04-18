@@ -7,14 +7,21 @@ Page({
     userImage: "",
   },
   onReady() {
+    console.log('Home onReady');
   },
   onShow() {
+    console.log('Home onShow');
+    this.reload();
   },
   onHide() {
   },
   onUnload() {
   },
   onLoad(query) {
+    console.log('Home onLoad');
+    setInterval(this.repeatFetching, app.data.notificationFetchInterval);
+  },
+  reload() {
     if(app.data.userId == -1 && app.data.requiredLogin) {
       my.getAuthCode({
         success: (resp) => {
@@ -51,7 +58,6 @@ Page({
             });
         }
       });
-      
     } else {
       this.setAuth("User - Không cần yêu cầu Login");
       this.setData({
@@ -71,7 +77,6 @@ Page({
         }
       });
     }
-    setInterval(this.repeatFetching, app.data.notificationFetchInterval);
   },
   repeatFetching() {
     console.log('Repeating...');
